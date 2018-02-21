@@ -1,0 +1,6 @@
+Django==2.0.1
+django-froala-editor==2.7.5
+django-password-strength==1.2.1
+django-passwords==0.3.12
+Pillow==5.0.0
+pytz==2017.3
