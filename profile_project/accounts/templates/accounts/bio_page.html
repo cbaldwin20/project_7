@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}  
+
+{% block body %}
+<h1>{{ user_profile.first_name}} {{ user_profile.last_name }}'s 
+bio page</h1>
+
+
+<p>{{ user_profile.bio|safe }}</p>
+
+<a href="{% url 'accounts:profile' %}">Return to profile</a>
+{% endblock %}

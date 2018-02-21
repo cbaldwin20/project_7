@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}  
+
+{% block body %}
+<h1>{{ user_profile.first_name}} {{ user_profile.last_name }}'s 
+profile page</h1>
+<p></p>
+<p><strong><a href="{% url 'accounts:edit_profile' %}">Edit profile</a></strong></p>
+
+<h2>First name: {{ user_profile.first_name }}</h2>
+<h2>Last name: {{ user_profile.last_name }}</h2>
+<h2>Birthday: {{ user_profile.birthday }}</h2>
+<h2>Location: {{ user_profile.city }}, {{ user_profile.state }}
+, {{ user_profile.country }}</h2>
+<h2>Favorite animal: {{ user_profile.favorite_animal }}</h2>
+<h2>Hobby: {{ user_profile.hobby }}</h2>
+<h2>Email: {{ user_profile.email }}</h2>
+<h2>
+    Bio: {{ user_profile.bio|safe|truncatechars_html:50 }}...
+    <a href="{% url 'accounts:bio' %}">see more</a>
+</h2>
+{% if user_profile.image %}
+<img src="{{ user_profile.image.url }}" />
+{% endif %}
+
+
+
+{% endblock %}
