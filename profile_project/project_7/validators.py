@@ -56,3 +56,14 @@ class AtLeastOneValidator:
                             number, and special character."
 
 
+class NoUsername:
+    """ when a user is registering, their password can't have their
+    username inside of it"""
+    def validate(self, password, user=None):
+        username = user.username.lower()
+        if username in password.lower():
+            raise ValidationError("The new password cannot contain your "
+                "username ({})".format(username))
+
+    def get_help_text(self):
+        return "Your password cannot contain your username."

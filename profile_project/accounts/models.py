@@ -2,14 +2,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings 
-
 #from froala_editor.fields import FroalaField
-
-
-
-
-
-
 
 def image_upload_path(instance, filename):
     return settings.MEDIA_ROOT

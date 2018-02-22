@@ -12,7 +12,6 @@ from django.contrib.auth.password_validation import (
 #import re
 import datetime
 
-
 from accounts.forms import EditForm, ChangePasswordForm 
 
 
@@ -66,6 +65,7 @@ def sign_up(request):
                             'accounts:create_profile'))  
     return render(request, 'accounts/sign_up.html', {'form': form})
 
+
 @login_required
 def sign_out(request):
     """sings person out"""
@@ -84,6 +84,7 @@ def sign_out(request):
     #else:
         #final_bday = 0
     #return final_bday
+
 
 @login_required
 def create_profile(request):
@@ -140,7 +141,6 @@ def profile(request):
                                     { 'user_profile': user_profile })
 
 
-
 @login_required
 def bio(request):
     """shows users bio page"""
@@ -155,7 +155,7 @@ def change_password(request):
     help_texts = password_validators_help_texts(
                                             password_validators=None)
     if request.method == 'POST':
-        form = ChangePasswordForm(request.POST)
+        form = ChangePasswordForm(request.POST, request=request)
         if form.is_valid():
             current_password = form.cleaned_data['current_password']
         
@@ -171,8 +171,11 @@ def change_password(request):
                     your current password!")
                 return redirect('accounts:change_password')
     else:
-        form = ChangePasswordForm()       
-    return render(request, 'accounts/change_password.html', 
+        form = ChangePasswordForm()
+    help_texts = help_texts[:-1]
+    help_texts.append("Your first name, last name, or username"
+            " cannot be in your new password.")
+    return render(request, 'accounts/change_password.html',
                         {'form':form, 'help_texts': help_texts })
 
 

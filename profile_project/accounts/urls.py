@@ -9,7 +9,6 @@ urlpatterns = [
     url(r'sign_up/$', views.sign_up, name='sign_up'),
     url(r'sign_out/$', views.sign_out, name='sign_out'),
 
-    
     url(r'profile/create_profile/$', views.create_profile, 
     	name='create_profile'),
     url(r'profile/edit_profile/$', views.edit_profile, 
